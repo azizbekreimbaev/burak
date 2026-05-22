@@ -1,3 +1,11 @@
+// Architectural pattern: MVC, MVP, Dependency Injection
+// Bu umumiy struktura ==> inson butun tuzulishi
+// Model View Controller
+// Model View Presenter
+
+// Design pattern: Middleware, Decorator
+// Bu maxsus kichik struktura ==> inson maxsus m-n qol qismi
+
 console.log('====================================');
 console.log("Executed");
 console.log('====================================');
