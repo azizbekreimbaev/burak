@@ -1,3 +1,22 @@
+{
+    "compilerOptions": {
+        "target": "ES2020",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "rootDir": "./src",
+        "outDir": "./dist",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true
+    },
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
 // {
 //     "compilerOptions": {
 //         "target": "ES2020",
@@ -9,7 +28,7 @@
 //         "forceConsistentCasingInFileNames": true,
 //         "baseUrl": "./",
 //         "paths": {
-//             "+": [
+//             "*": [
 //                 "node_modules/*"
 //             ]
 //         }
@@ -21,28 +40,3 @@
 //         "node_modules"
 //     ]
 // }
-
-
-{
-    "compilerOptions": {
-        "target": "ES2020",
-        "module": "commonjs",
-        "outDir": "./dist",
-        "strict": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true,
-        "baseUrl": "./",
-        "paths": {
-            "*": [
-                "node_modules/*"
-            ]
-        }
-    },
-    "include": [
-        "src/**/*.ts"
-    ],
-    "exclude": [
-        "node_modules"
-    ]
-}
