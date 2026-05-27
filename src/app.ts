@@ -1,10 +1,9 @@
 import express from 'express'
 import path from 'path'
-
-const app = express()
-
+import router from './router'
 
 // 1 - Starting Codes
+const app = express()
 // console.log("__dirname", __dirname);
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
@@ -21,5 +20,7 @@ app.set("view engine", "ejs")
 
 
 // 4 - Router Codes
+app.use("/", router)  // Middleware Design Pattern
+
 
 export default app
