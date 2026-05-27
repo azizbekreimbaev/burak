@@ -1,6 +1,8 @@
 import express from 'express'
 import path from 'path'
 import router from './router'
+import routerAdmin from './routerAdmin'
+
 
 // 1 - Starting Codes
 const app = express()
@@ -20,7 +22,8 @@ app.set("view engine", "ejs")
 
 
 // 4 - Router Codes
-app.use("/", router)  // Middleware Design Pattern
+app.use("/admin", routerAdmin)   // SSR: EJS     2-Admin uchun SSRda quramiz
+// app.use("/", router)  // SPA: REACT   1-Bu yerda RESTAPI serverda sifatida ishlatamiz             Middleware Design Pattern
 
 
 export default app
