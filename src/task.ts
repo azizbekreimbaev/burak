@@ -3,11 +3,58 @@
 
 
 
+// # =========================================
+
+// # You should create a function named confirmEnding that takes two parameters: the string to check and the string to check against.
+// # The function should return true if the first string ends with the second string, and false otherwise.
+// # You should not use the .endsWith() method
+// # instead, use one of the JavaScript substring methods to achieve this.
+
+// # confirmEnding("Congratulation", "on") should return true.
+// # Waiting: 5. confirmEnding("Connor", "n") should return false.
+// # Waiting: 6. confirmEnding("Walking on water and developing software from a specification are easy if both are frozen", "specification") should return false.
+// # Waiting: 7. confirmEnding("He has to give me a new name", "name") should return true.
+
+
+function confirmEnding(str1: string, str2: string) {
+    const diff = str1.length - str2.length
+    // console.log(diff)
+    const slc = str1.slice(diff)
+    // console.log(slc)
+
+    if (slc == str2) {
+        return true
+    } else {
+        return false
+    }
+
+}
+
+console.log(confirmEnding("Congratulation", "on"))
+console.log(confirmEnding("Walking on water and developing software from a specification are easy if both are frozen", "specification"))
 
 
 
+// // You should have a function truncateString that accepts two arguments, the first one a string, the second one a number.
+// // If the length of the string is more than the given number, the string should be truncated to reduce the length so that it is equal the given number, and ... should be appended at the end of the truncated string.
+// // If the length of the string is equal to or lower than the given number, the string should be returned unchanged.
 
 
+// //     truncateString("A-tisket a-tasket A green and yellow basket", 8) should return the string A - tisket....
+
+// function truncateString(str: string, num: number) {
+//     if (str.length > num) {
+//         const sliced = str.slice(num, str.length)
+//         // console.log(sliced)
+//         const replaced = str.replace(sliced, "...")
+//         return replaced
+//     } else {
+//         return str
+//     }
+// }
+
+
+// console.log(truncateString("A-tisket a-tasket A green and yellow basket", 8))
 
 
 
@@ -55,17 +102,17 @@
 //                 maskEmail("user@domain.org") should return "u**r@domain.org".
 
 
-// const email: string = "azizbek00000@gmail.com"
-const email: string = "freecodecamp@example.com"
+// // const email: string = "azizbek00000@gmail.com"
+// const email: string = "freecodecamp@example.com"
 
-function masker(email: string) {
-    let secondIndex: number = email.indexOf("@")
-    let sliced: string = email.slice(1, secondIndex)
-    // console.log(sliced)
-    return email.replace(sliced, "*")
-}
+// function masker(email: string) {
+//     let secondIndex: number = email.indexOf("@")
+//     let sliced: string = email.slice(1, secondIndex)
+//     // console.log(sliced)
+//     return email.replace(sliced, "*")
+// }
 
-console.log(masker(email))
+// console.log(masker(email))
 
 
 
