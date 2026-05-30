@@ -1,22 +1,44 @@
+# TASK N
 
-# // TASK M
+# Stringni palindrom ekanligini aniqlab true yoki false qaytarsin.
 
-# // Array ichidagi har bir raqam uchun raqamning o'zi va uning kvadratidan tashkil topgan object hosil qilib qaytarsin.
-
-# // Masalan: getSquareNumbers([1, 2, 3]) return [{ number: 1, square: 1 }, ...]
-
-
-def name(arr):
-    result = []
-    for item in arr:
-        a = f"number:{item}, square: {item*item}"
-        print(a)
-        result.append({a})
-
-    return result
+# Masalan: palindromCheck("dad") return true
 
 
-print(name([1, 2]))
+def palindromCheck(str):
+    a = str[:len(str)]
+    b = a[::-1]
+
+    # print(a, b)
+
+    if a == b:
+        return True
+    else:
+        return False
+
+
+print(palindromCheck("nima"))
+print(palindromCheck("dad"))
+
+
+# # // TASK M
+
+# # // Array ichidagi har bir raqam uchun raqamning o'zi va uning kvadratidan tashkil topgan object hosil qilib qaytarsin.
+
+# # // Masalan: getSquareNumbers([1, 2, 3]) return [{ number: 1, square: 1 }, ...]
+
+
+# def name(arr):
+#     result = []
+#     for item in arr:
+#         a = f"number:{item}, square: {item*item}"
+#         print(a)
+#         result.append({a})
+
+#     return result
+
+
+# print(name([1, 2]))
 
 
 # # TASK L
