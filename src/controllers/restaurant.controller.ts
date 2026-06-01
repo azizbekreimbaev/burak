@@ -2,6 +2,8 @@ import { T } from '../libs/types/common'
 import { Request, Response } from 'express'
 const restaurantController: T = {};
 import MemberService from '../models/Member.service'
+import { MemberInput } from '../libs/types/member';
+import { MemberType } from '../libs/enums/member.enum';
 
 
 
@@ -50,12 +52,24 @@ restaurantController.processLogin = (req: Request, res: Response) => {
 
 };
 
-restaurantController.processSignup = (req: Request, res: Response) => {
+restaurantController.processSignup = async (req: Request, res: Response) => {
     try {
-        console.log("processSignup")
-        res.send("POSTMAN SIGNUP DONE")
+        console.log("processSignup");
+        console.log("body:", req.body);
+
+        const newMember: MemberInput = req.body;
+        newMember.memberType = MemberType.RESTAURANT;
+        const memberService = new MemberService();
+        const result = await memberService.processSignup(newMember);
+
+
+        // await memberService.processSignup();
+        // const result = await memberService.processSignup();
+        res.send(result)
+        // res.send("POSTMAN SIGNUP DONE")
     } catch (err) {
         console.log("ERROR, getsignUp:", err)
+        res.send(err)
     }
 
 };
