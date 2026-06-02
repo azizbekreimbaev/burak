@@ -1,24 +1,38 @@
-# TASK N
+def calculateSumOfNumbers(arr):
+    total = 0
 
-# Stringni palindrom ekanligini aniqlab true yoki false qaytarsin.
+    for item in arr:
+        if type(item) == int or type(item) == float:
+            total = total + item
 
-# Masalan: palindromCheck("dad") return true
-
-
-def palindromCheck(str):
-    a = str[:len(str)]
-    b = a[::-1]
-
-    # print(a, b)
-
-    if a == b:
-        return True
-    else:
-        return False
+    return total
 
 
-print(palindromCheck("nima"))
-print(palindromCheck("dad"))
+print(calculateSumOfNumbers([10, "10", {"son": 10}, True, 35]))
+
+
+
+# # TASK N
+
+# # Stringni palindrom ekanligini aniqlab true yoki false qaytarsin.
+
+# # Masalan: palindromCheck("dad") return true
+
+
+# def palindromCheck(str):
+#     a = str[:len(str)]
+#     b = a[::-1]
+
+#     # print(a, b)
+
+#     if a == b:
+#         return True
+#     else:
+#         return False
+
+
+# print(palindromCheck("nima"))
+# print(palindromCheck("dad"))
 
 
 # # // TASK M
