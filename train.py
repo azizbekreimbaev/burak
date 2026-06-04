@@ -1,15 +1,27 @@
-def calculateSumOfNumbers(arr):
-    total = 0
+# TASK P
 
-    for item in arr:
-        if type(item) == int or type(item) == float:
-            total = total + item
+# Objectni nested array sifatida convert qilib qaytarsin.
 
-    return total
+# Masalan: objectToArray({a: 10, b: 20}) return [["a", 10], ["b", 20]]
 
 
-print(calculateSumOfNumbers([10, "10", {"son": 10}, True, 35]))
+def objectToArray(obj):
+    return [[key, value] for key, value in obj.items()]
 
+
+print(objectToArray({"a": 10, "b": 20}))
+
+# def calculateSumOfNumbers(arr):
+#     total = 0
+
+#     for item in arr:
+#         if type(item) == int or type(item) == float:
+#             total = total + item
+
+#     return total
+
+
+# print(calculateSumOfNumbers([10, "10", {"son": 10}, True, 35]))
 
 
 # # TASK N
