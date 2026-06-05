@@ -24,7 +24,7 @@ app.set("view engine", "ejs")
 
 // 4 - Router Codes
 app.use("/admin", routerAdmin)   // SSR: EJS     2-Admin uchun SSRda quramiz
-// app.use("/", router)  // SPA: REACT   1-Bu yerda RESTAPI serverda sifatida ishlatamiz             Middleware Design Pattern
+app.use("/", router)  // SPA: REACT   1-Bu yerda RESTAPI serverda sifatida ishlatamiz             Middleware Design Pattern
 
 
 export default app
