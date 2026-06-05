@@ -20,6 +20,7 @@ mongoose
         const PORT = process.env.PORT ?? 3003;
         app.listen(PORT, () => {
             console.log("The server is running successfully on PORT:", PORT)
+            console.log(`Admin project on http://localhost:${PORT}/admin \n`)
         })
     })
     .catch((err) => {
