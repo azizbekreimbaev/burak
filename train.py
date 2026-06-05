@@ -1,15 +1,26 @@
-# TASK P
-
-# Objectni nested array sifatida convert qilib qaytarsin.
-
-# Masalan: objectToArray({a: 10, b: 20}) return [["a", 10], ["b", 20]]
+# TASK Q Objectda berilgan string propertysi borligini tekshirsin. Masalan: hasProperty({name: "BMW"}, "name") return true
 
 
-def objectToArray(obj):
-    return [[key, value] for key, value in obj.items()]
+def hasProperty(obj, prop):
+    return prop in obj
 
 
-print(objectToArray({"a": 10, "b": 20}))
+print(hasProperty({"name": "BMW"}, "name"))  # True
+print(hasProperty({"name": "BMW"}, "age"))   # False
+
+
+# # TASK P
+
+# # Objectni nested array sifatida convert qilib qaytarsin.
+
+# # Masalan: objectToArray({a: 10, b: 20}) return [["a", 10], ["b", 20]]
+
+
+# def objectToArray(obj):
+#     return [[key, value] for key, value in obj.items()]
+
+
+# print(objectToArray({"a": 10, "b": 20}))
 
 # def calculateSumOfNumbers(arr):
 #     total = 0
