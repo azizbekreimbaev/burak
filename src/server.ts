@@ -13,6 +13,8 @@ import app from "./app"
 
 import mongoose from 'mongoose';
 
+
+// TSP
 mongoose
     .connect(process.env.MONGO_URL as string, {})
     .then((data) => {

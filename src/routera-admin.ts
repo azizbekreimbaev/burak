@@ -5,7 +5,7 @@ import restaurantController from './controllers/restaurant.controller'
 routerAdmin.get("/", restaurantController.goHome);
 
 routerAdmin
-    .get("/login", restaurantController.getLogin)
+    .get("/login", restaurantController.getLogin) // CALL
     .post("/login", restaurantController.processLogin);
 
 routerAdmin

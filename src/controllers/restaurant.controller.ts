@@ -22,6 +22,7 @@ restaurantController.goHome = (req: Request, res: Response) => {
 
 };
 
+
 restaurantController.getSignup = (req: Request, res: Response) => {
     try {
         console.log("getSignup")
@@ -32,7 +33,7 @@ restaurantController.getSignup = (req: Request, res: Response) => {
 
 };
 
-
+// DEFine
 restaurantController.getLogin = (req: Request, res: Response) => {
     try {
         console.log("getLogin")
@@ -71,9 +72,9 @@ restaurantController.processLogin = async (req: Request, res: Response) => {
         console.log("processLogin");
         console.log("bodY:", req.body);
         const input: LoginInput = req.body;
-        // const memberService = new MemberService();
-        // const result = await memberService.processLogin(input);
-        // TODO:: SESSIONS AUTHENTICATION
+        const memberService = new MemberService();
+        const result = await memberService.processLogin(input);
+        // TOD: SESSIONS AUTHENTICATION
 
 
         res.send("result");
