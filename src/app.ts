@@ -27,6 +27,7 @@ app.use(express.json());
 app.use(morgan(MORGAN_FORMAT))
 
 // 2 - Session Codes
+//cookiess =  Id.Signature
 
 app.use(
     session({

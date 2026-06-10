@@ -58,12 +58,13 @@ restaurantController.processSignup = async (req: AdminRequest, res: Response) =>
         const newMember: MemberInput = req.body;
         newMember.memberType = MemberType.RESTAURANT;
         const result = await memberService.processSignup(newMember);
-
-        // TODO:: SESSIONS AUTHENTICATION
+        console.log("result1", result)
 
         req.session.member = result;
+        console.log("result2", req.session.member)
         req.session.save(function () {
             res.send(result);
+            console.log("result3", result)
         })
 
 
@@ -85,9 +86,12 @@ restaurantController.processLogin = async (req: AdminRequest, res: Response) => 
         const input: LoginInput = req.body;
         const memberService = new MemberService();
         const result = await memberService.processLogin(input);
-        // TODO: SESSIONS AUTHENTICATION
+        console.log("result1", result)
 
+        console.log("req.session", req.session)
+        console.log("req.session.member", req.session.member)
         req.session.member = result;
+        console.log("result2", result)
         req.session.save(function () {
             res.send(result);
         })
