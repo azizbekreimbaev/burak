@@ -1,17 +1,31 @@
-# TASK R
+# TASK S
 
-# "1 + 2" ko'rinishidagi stringni hisoblab number qaytarsin.
+# Array ichidagi tushib qolgan sonni topib qaytarsin.
 
-# Masalan: calculate("1 + 3") return 4
+# Masalan: missingNumber([3, 0, 1]) return 2 in python
+
+def missingNumber(nums):
+    n = len(nums)
+    return n * (n + 1) // 2 - sum(nums)
 
 
-def calculate(str):
-    a = eval(str)
-    print(a)
+print(missingNumber([3, 0, 1]))  # 2
 
 
-calculate("1+3")
-calculate("1+3+4")
+# # TASK R
+
+# # "1 + 2" ko'rinishidagi stringni hisoblab number qaytarsin.
+
+# # Masalan: calculate("1 + 3") return 4
+
+
+# def calculate(str):
+#     a = eval(str)
+#     print(a)
+
+
+# calculate("1+3")
+# calculate("1+3+4")
 
 
 # # TASK Q Objectda berilgan string propertysi borligini tekshirsin. Masalan: hasProperty({name: "BMW"}, "name") return true
