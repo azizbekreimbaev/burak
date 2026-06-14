@@ -4,7 +4,7 @@ const restaurantController: T = {};
 import MemberService from '../models/Member.service'
 import { AdminRequest, LoginInput, MemberInput } from '../libs/types/member';
 import { MemberType } from '../libs/enums/member.enum';
-import Errors, { Message } from '../libs/Errors';
+import Errors, { HttpCode, Message } from '../libs/Errors';
 
 
 
@@ -53,18 +53,38 @@ restaurantController.getLogin = (req: Request, res: Response) => {
 restaurantController.processSignup = async (req: AdminRequest, res: Response) => {
     try {
         console.log("processSignup");
+        const file = req.file;
+
+        if (!file)
+            throw new Errors(HttpCode.BAD_REQUEST, Message.SOMETHING_WENT_WRONG);
+
+        // console.log("File:", file);
+        // throw new Error("Forced Quit");
+
         console.log("body:", req.body);
 
         const newMember: MemberInput = req.body;
+        newMember.memberImage = req.file?.path;
         newMember.memberType = MemberType.RESTAURANT;
+
+        // console.log('====================================');
+        // console.log("newMember.memberImage", newMember.memberImage);
+        // console.log('====================================');
+
+        // newMember.memberImage = req.file?.path;
+        // console.log('====================================');
+        // console.log("newMember.memberImage22222", newMember.memberImage);
+        // console.log('====================================');
+
+
         const result = await memberService.processSignup(newMember);
-        console.log("result1", result)
+        // console.log("result1", result)
 
         req.session.member = result;
-        console.log("result2", req.session.member)
+        // console.log("result2", req.session.member)
         req.session.save(function () {
-            res.send(result);
-            console.log("result3", result)
+            res.redirect("/admin/product/all");
+            // console.log("result3", result)
         })
 
 
@@ -86,14 +106,11 @@ restaurantController.processLogin = async (req: AdminRequest, res: Response) => 
         const input: LoginInput = req.body;
         const memberService = new MemberService();
         const result = await memberService.processLogin(input);
-        console.log("result1", result)
 
-        console.log("req.session", req.session)
-        console.log("req.session.member", req.session.member)
         req.session.member = result;
-        console.log("result2", result)
         req.session.save(function () {
-            res.send(result);
+            res.redirect("/admin/product/all");
+            // res.send(result);
         })
 
 
@@ -143,6 +160,9 @@ restaurantController.checkAuthSession = async (req: AdminRequest, res: Response)
 
 
 restaurantController.verifyRestaurant = (req: AdminRequest, res: Response, next: NextFunction) => {
+    console.log('====================================');
+    console.log("sdf", req.session?.member);
+    console.log('====================================');
     if (req.session?.member?.memberType === MemberType.RESTAURANT) {
         req.member = req.session.member;
         next();
