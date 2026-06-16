@@ -6,6 +6,13 @@
         <h3>
             <%=member.memberNick %>
         </h3>
+
+        <% products.map((value, key)=> {%>
+            <p>
+                <%= value.productName%> - <%= value.productSize %> - PRICE <%= value.productPrice %>
+            </p>
+            <% }) %>
+
     </body>
 
     </html>
