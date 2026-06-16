@@ -28,17 +28,13 @@ class ProductService {
     }
 
 
-    public async updateChosenProduct(
-        id: string,
-        input: ProductUpdateInput
-    ): Promise<Product> {
+    public async updateChosenProduct(id: string, input: ProductUpdateInput): Promise<Product> {
+        // string ==> onjectID
         id = shapeIntMongooseObjectId(id);
-        const result = await this.productModel
-            .findOneAndUpdate({ _id: id }, input, { new: true })
-            .exec();
-        if (!result) throw new Errors(HttpCode.NOT_MODIFIED,
-            Message.UPDATE_FAILED);
+        const result = await this.productModel.findOneAndUpdate({ _id: id }, input, { new: true }).exec();
+        if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.UPDATE_FAILED);
 
+        console.log("RESULT", result)
         return result;
     }
 
