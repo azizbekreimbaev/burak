@@ -140,6 +140,23 @@ restaurantController.logout = async (req: AdminRequest, res: Response) => {
 };
 
 
+restaurantController.getUser = async (req: Request, res: Response) => {
+    try {
+        console.log("getUser");
+
+        const result = await memberService.getUser();
+        console.log("result", result);
+
+        res.render("users", { users: result })
+
+
+    } catch (err) {
+        console.log("ERROR, getUser", err);
+        res.redirect("/admin/login");
+
+    }
+}
+
 
 
 
@@ -160,9 +177,9 @@ restaurantController.checkAuthSession = async (req: AdminRequest, res: Response)
 
 
 restaurantController.verifyRestaurant = (req: AdminRequest, res: Response, next: NextFunction) => {
-    console.log('====================================');
-    console.log("sdf", req.session?.member);
-    console.log('====================================');
+    // console.log('====================================');
+    // console.log("sdf", req.session?.member);
+    // console.log('====================================');
     if (req.session?.member?.memberType === MemberType.RESTAURANT) {
         req.member = req.session.member;
         next();

@@ -41,8 +41,13 @@ productController.createNewProduct = async (req: AdminRequest, res: Response) =>
 
         const data: ProductInput = req.body;
         data.productImages = req.files?.map((ele) => {
+            // console.log("BEFORE", ele.path);
+            // console.log("AFTER", ele.path.replace(/\\/g, '/'));
             return ele.path.replace(/\\/g, '/');
+
         })
+
+
 
         await productService.createNewProduct(data);
         // console.log("data", data)
@@ -51,16 +56,18 @@ productController.createNewProduct = async (req: AdminRequest, res: Response) =>
     } catch (err) {
         console.log("ERROR, createNewProduct:", err)
         const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
-        res.send(`<script> alert("Successfully created"): window.location.replace('admin/product/all)</script>`);
+        res.send(`<script> alert("${message}"): window.location.replace('admin/product/all)</script>`);
 
+        // console.log("FULL ERROR:", err);
+        // throw err;
     }
 
 };
 
 productController.updateChosenProduct = async (req: Request, res: Response) => {
     try {
-        // console.log("BEFORE", req);
-        // console.log("BEFORE PARAM", req.params);
+        console.log("============BEFORE==============", req);
+        console.log("==========BEFORE PARAM===========", req.params);
 
         const id = req.params.id as string;
 

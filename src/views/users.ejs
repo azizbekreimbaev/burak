@@ -3,6 +3,14 @@
 
     <body>
         <h1>USERS PAGE</h1>
+        <h3>
+            <% users.map((value)=> {
+                %>
+                <h2>
+                    <%= value.memberNick %>
+                </h2>
+                <% }) %>
+        </h3>
     </body>
 
     </html>
