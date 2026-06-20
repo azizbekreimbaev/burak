@@ -1,15 +1,37 @@
-# TASK T
+# TASK V
 
-# Ikkita arrayni qabul qilib, ularni birlashtirib tartiblangan holda qaytarsin.
+# Stringdagi har bir harf necha marta takrorlanganini object sifatida qaytarsin.
 
-# Masalan: mergeSortedArrays([0, 3, 4], [4, 6]) return [0, 3, 4, 4, 6]
-
-
-def mergeSortedArrays(arr1, arr2):
-    return sorted(arr1 + arr2)
+# Masalan: countChars("hello") return {h: 1, e: 1, l: 2, o: 1}
 
 
-print(mergeSortedArrays([0, 3, 4], [4, 6]))
+def countChars(s):
+    result = {}
+
+    for char in s:
+        if char in result:
+            result[char] += 1
+        else:
+            result[char] = 1
+
+    return result
+
+
+print(countChars("hello"))
+
+
+# # TASK T
+
+# # Ikkita arrayni qabul qilib, ularni birlashtirib tartiblangan holda qaytarsin.
+
+# # Masalan: mergeSortedArrays([0, 3, 4], [4, 6]) return [0, 3, 4, 4, 6]
+
+
+# def mergeSortedArrays(arr1, arr2):
+#     return sorted(arr1 + arr2)
+
+
+# print(mergeSortedArrays([0, 3, 4], [4, 6]))
 # [0, 3, 4, 4, 6]
 
 # # TASK S
