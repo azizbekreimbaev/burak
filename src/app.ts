@@ -43,9 +43,9 @@ app.use(
 
 
 app.use(function (req, res, next) {
-    console.log("req.session", req.session)
+    // console.log("req.session", req.session)
     const sessionInstance = req.session as T;
-    console.log("sessionInstance", sessionInstance)
+    // console.log("sessionInstance", sessionInstance)
     res.locals.member = sessionInstance.member;
     // console.log("res.locals.member2", res.locals.member)
     next()
