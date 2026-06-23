@@ -32,6 +32,36 @@ $(function () {
         $(".dish-container").slideToggle(100);
         $("#process-btn").css("display", "flex")
     })
+
+    $(".new-product-status").on("change", async function (e) {
+        const id = e.target.id;
+        const productStatus = $(`#${id}.new-product-status`).val();
+        console.log('====================================');
+        console.log(id);
+        console.log(productStatus);
+        console.log('====================================');
+
+
+        try {
+
+            const response = await axios.post(`/admin/product/${id}`, { productStatus: productStatus });
+            const result = response.data
+
+            if (result.data) {
+                console.log('====================================');
+                console.log("Product updated");
+                console.log('====================================');
+                $('.new-product-status').blur()
+            } else alert("Update failed")
+
+        } catch (err) {
+            alert("Product update failed")
+        }
+
+    })
+
+
+
 })
 
 
