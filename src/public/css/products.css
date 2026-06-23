@@ -36,7 +36,6 @@
   padding-bottom: 80px;
   width: 100%;
   height: auto;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -67,9 +66,7 @@
   margin-top: 20px;
   width: 100%;
   height: auto;
-
-  /* TODO: UNCOMMENT */
-  /*display: none;*/
+  display: none;
   flex-direction: column;
   align-items: center;
 }
@@ -344,15 +341,15 @@ table th {
   transition: 0.4s;
 }
 
-.products-container input:checked + .slider {
+.products-container input:checked+.slider {
   background-color: #2196f3;
 }
 
-.products-container input:focus + .slider {
+.products-container input:focus+.slider {
   box-shadow: 0 0 1px #2196f3;
 }
 
-.products-container input:checked + .slider:before {
+.products-container input:checked+.slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
