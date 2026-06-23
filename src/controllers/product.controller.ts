@@ -14,7 +14,7 @@ productController.getAllProducts = async (req: Request, res: Response) => {
         console.log("getAllProducts");
 
         const data = await productService.getAllProducts();
-        // console.log("data", data);
+        console.log("data", data);
         // console.log("req.member", req.member)
 
 
