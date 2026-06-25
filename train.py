@@ -1,23 +1,43 @@
-# TASK V
+# TASK X
 
-# Stringdagi har bir harf necha marta takrorlanganini object sifatida qaytarsin.
+# Object tarkibida(nested bo'lsa ham) berilgan kalit necha marta takrorlanganini sanang.
 
-# Masalan: countChars("hello") return {h: 1, e: 1, l: 2, o: 1}
+# Masalan: countOccurrences({model: "A", s: {model: "B"}}, "model") return 2
 
-
-def countChars(s):
-    result = {}
-
-    for char in s:
-        if char in result:
-            result[char] += 1
-        else:
-            result[char] = 1
-
-    return result
+def countOccurrences(obj, key):
+    if isinstance(obj, dict):
+        return sum(
+            (1 if k == key else 0) + countOccurrences(v, key)
+            for k, v in obj.items()
+        )
+    if isinstance(obj, list):
+        return sum(countOccurrences(item, key) for item in obj)
+    return 0
 
 
-print(countChars("hello"))
+countOccurrences({"model": "A", "s": {"model": "B"}}, "model")
+
+
+# # TASK V
+
+# # Stringdagi har bir harf necha marta takrorlanganini object sifatida qaytarsin.
+
+# # Masalan: countChars("hello") return {h: 1, e: 1, l: 2, o: 1}
+
+
+# def countChars(s):
+#     result = {}
+
+#     for char in s:
+#         if char in result:
+#             result[char] += 1
+#         else:
+#             result[char] = 1
+
+#     return result
+
+
+# print(countChars("hello"))
 
 
 # # TASK T
