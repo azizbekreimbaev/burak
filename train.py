@@ -1,21 +1,34 @@
-# TASK X
+# TASK Y
 
-# Object tarkibida(nested bo'lsa ham) berilgan kalit necha marta takrorlanganini sanang.
+# Ikkala arrayda ham ishtirok etgan bir xil qiymatlarni qaytarsin.
 
-# Masalan: countOccurrences({model: "A", s: {model: "B"}}, "model") return 2
+# Masalan: findIntersection([1, 2, 3], [3, 2, 0]) return [2, 3]
 
-def countOccurrences(obj, key):
-    if isinstance(obj, dict):
-        return sum(
-            (1 if k == key else 0) + countOccurrences(v, key)
-            for k, v in obj.items()
-        )
-    if isinstance(obj, list):
-        return sum(countOccurrences(item, key) for item in obj)
-    return 0
+def findIntersection(arr1, arr2):
+    return list(set(arr1) & set(arr2))
 
 
-countOccurrences({"model": "A", "s": {"model": "B"}}, "model")
+# Test
+print(findIntersection([1, 2, 3], [3, 2, 0]))  # [2, 3]
+
+# # TASK X
+
+# # Object tarkibida(nested bo'lsa ham) berilgan kalit necha marta takrorlanganini sanang.
+
+# # Masalan: countOccurrences({model: "A", s: {model: "B"}}, "model") return 2
+
+# def countOccurrences(obj, key):
+#     if isinstance(obj, dict):
+#         return sum(
+#             (1 if k == key else 0) + countOccurrences(v, key)
+#             for k, v in obj.items()
+#         )
+#     if isinstance(obj, list):
+#         return sum(countOccurrences(item, key) for item in obj)
+#     return 0
+
+
+# countOccurrences({"model": "A", "s": {"model": "B"}}, "model")
 
 
 # # TASK V
