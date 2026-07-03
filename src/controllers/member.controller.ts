@@ -3,7 +3,7 @@ import { Request, Response } from 'express'
 import { LoginInput, Member, MemberInput } from '../libs/types/member';
 import { MemberType } from '../libs/enums/member.enum';
 import MemberService from '../models/Member.service';
-import Errors, { HttpCode } from '../libs/Errors';
+import Errors, { HttpCode, Message } from '../libs/Errors';
 import AuthService from '../models/Auth.service';
 import { AUTH_TIMER } from '../libs/config';
 
@@ -58,6 +58,35 @@ memberController.login = async (req: Request, res: Response) => {
     }
 
 };
+
+
+memberController.verifyAuth = async (req: Request, res: Response) => {
+
+    try {
+        let member = null;
+        const token = req.cookies["accessToken"];
+        if (token) {
+            member = await authService.chechAuth(token)
+        }
+
+        if (!member) {
+            throw new Errors(HttpCode.UNAUTHORIZED, Message.NOT_AUTHENTICATED)
+        }
+
+        console.log('====================================');
+        console.log("member", member);
+        console.log('====================================');
+        res.status(HttpCode.OK).json({ member: member })
+
+    } catch (err) {
+        console.log("ERROR, verifyAuth:", err);
+        if (err instanceof Errors) res.status(err.code).json(err);
+        else res.status(Errors.standart.code).json(Errors.standart);
+    }
+
+
+
+}
 
 
 
