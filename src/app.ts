@@ -8,6 +8,8 @@ import { MORGAN_FORMAT } from './libs/config';
 import session from 'express-session';
 import ConnectMongoDB from 'connect-mongodb-session';
 import { T } from './libs/types/common';
+import cookieParser from 'cookie-parser'
+
 
 const MongoDBStore = ConnectMongoDB(session);
 
@@ -25,7 +27,9 @@ const app = express()
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(morgan(MORGAN_FORMAT))
+app.use(cookieParser())
+app.use(morgan(MORGAN_FORMAT));
+
 
 // 2 - Session Codes
 //cookiess =  Id.Signature
