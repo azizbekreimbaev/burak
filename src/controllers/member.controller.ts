@@ -4,12 +4,14 @@ import { LoginInput, Member, MemberInput } from '../libs/types/member';
 import { MemberType } from '../libs/enums/member.enum';
 import MemberService from '../models/Member.service';
 import Errors from '../libs/Errors';
+import AuthService from '../models/Auth.service';
 
 // SPA - REACT uchun 
 
 const memberController: T = {};
 
 const memberService = new MemberService();
+const authService = new AuthService();
 
 memberController.signup = async (req: Request, res: Response) => {
     try {
@@ -17,9 +19,13 @@ memberController.signup = async (req: Request, res: Response) => {
         console.log("body:", req.body);
 
         const input: MemberInput = req.body,
-            result: Member = await memberService.signup(input);
-        // TODO: TOKENS
-        
+            result: Member = await memberService.signup(input),
+            token = await authService.createToken(result);
+        console.log('====================================');
+        console.log("SIGNUPtoken==>", token);
+        console.log('====================================');
+
+
         res.json({ member: result })
     } catch (err) {
         console.log("ERROR, signup:", err)
@@ -27,7 +33,7 @@ memberController.signup = async (req: Request, res: Response) => {
         else res.status(Errors.standart.code).json(Errors.standart);
         // res.json({})
     }
-    
+
 };
 
 memberController.login = async (req: Request, res: Response) => {
@@ -35,9 +41,12 @@ memberController.login = async (req: Request, res: Response) => {
         console.log("login");
         console.log("bodY:", req.body);
         const input: LoginInput = req.body,
-        result = await memberService.login(input)
-        // TODO: TOKENS
-        
+            result = await memberService.login(input),
+            token = await authService.createToken(result);
+        console.log('====================================');
+        console.log("token==>", token);
+        console.log('====================================');
+
         res.json({ member: result })
     } catch (err) {
         console.log("ERROR, login:", err);
