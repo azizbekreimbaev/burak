@@ -1,6 +1,6 @@
 import { T } from '../libs/types/common'
-import { Request, Response } from 'express'
-import { LoginInput, Member, MemberInput } from '../libs/types/member';
+import { NextFunction, Request, Response } from 'express'
+import { ExtendedRequest, LoginInput, Member, MemberInput } from '../libs/types/member';
 import { MemberType } from '../libs/enums/member.enum';
 import MemberService from '../models/Member.service';
 import Errors, { HttpCode, Message } from '../libs/Errors';
@@ -60,34 +60,61 @@ memberController.login = async (req: Request, res: Response) => {
 };
 
 
-memberController.verifyAuth = async (req: Request, res: Response) => {
+
+memberController.logout = (req: ExtendedRequest, res: Response) => {
+    try {
+        console.log("logout");
+        res.cookie("accessToken", null, { maxAge: 0, httpOnly: true });
+        res.status(HttpCode.OK).json({ logout: true })
+    } catch (err) {
+        console.log("ERROR, logout:", err);
+        if (err instanceof Errors) res.status(err.code).json(err);
+        else res.status(Errors.standart.code).json(Errors.standart);
+    }
+}
+
+
+
+
+memberController.verifyAuth = async (req: ExtendedRequest, res: Response, next: NextFunction) => {
 
     try {
-        let member = null;
         const token = req.cookies["accessToken"];
         if (token) {
-            member = await authService.chechAuth(token)
+            req.member = await authService.chechAuth(token)
         }
 
-        if (!member) {
+        if (!req.member) {
             throw new Errors(HttpCode.UNAUTHORIZED, Message.NOT_AUTHENTICATED)
         }
 
-        console.log('====================================');
-        console.log("member", member);
-        console.log('====================================');
-        res.status(HttpCode.OK).json({ member: member })
+        next()
 
     } catch (err) {
         console.log("ERROR, verifyAuth:", err);
         if (err instanceof Errors) res.status(err.code).json(err);
         else res.status(Errors.standart.code).json(Errors.standart);
     }
+}
+
+
+
+memberController.retrieveAuth = async (req: ExtendedRequest, res: Response, next: NextFunction) => {
+
+    try {
+        const token = req.cookies["accessToken"];
+        if (token) {
+            req.member = await authService.chechAuth(token)
+        }
+        next()
+    } catch (err) {
+        console.log("ERROR, verifyAuth:", err);
+        next()
+    }
 
 
 
 }
-
 
 
 
