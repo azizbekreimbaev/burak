@@ -22,6 +22,8 @@ router.post(
 );
 
 
+router.get("/member/top-users", memberController.getTopUsers)
+
 
 
 
