@@ -6,6 +6,8 @@ import makeUploader from './libs/utils/uploader';
 router.get("/");
 
 /** MEmber */
+router.get("/member/restaurant", memberController.getRestaurant)
+
 router.post("/member/login", memberController.login);
 
 router.post("/member/signup", memberController.signup);
