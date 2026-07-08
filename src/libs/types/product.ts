@@ -31,6 +31,14 @@ export interface ProductInput {
 
 }
 
+export interface ProductInquiry {
+    order: string,
+    page: number,
+    limit: number,
+    productCollection?: ProductCollection,
+    search?: string
+}
+
 
 export interface ProductUpdateInput {
     _id: ObjectId;
