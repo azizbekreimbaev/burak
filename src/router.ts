@@ -7,7 +7,7 @@ import productController from './controllers/product.controller';
 router.get("/");
 
 /** MEmber */
-router.get("/member/restaurant", memberController.getRestaurant)
+router.get("/member/restaurant", memberController.getRestaurant);
 
 router.post("/member/login", memberController.login);
 
@@ -15,7 +15,7 @@ router.post("/member/signup", memberController.signup);
 
 router.post("/member/logout", memberController.logout);
 
-router.get("/member/detail", memberController.verifyAuth, memberController.getMemberDetail)
+router.get("/member/detail", memberController.verifyAuth, memberController.getMemberDetail);
 
 router.post(
     "/member/update",
@@ -25,12 +25,14 @@ router.post(
 );
 
 
-router.get("/member/top-users", memberController.getTopUsers)
+router.get("/member/top-users", memberController.getTopUsers);
 
 
 /** Product */
 
 
-router.get("/product/all", productController.getProducts)
+router.get("/product/all", productController.getProducts);
+
+router.get("/product/:id", memberController.retrieveAuth, productController.getProduct);
 
 export default router;

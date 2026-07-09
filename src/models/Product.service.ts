@@ -5,6 +5,7 @@ import ProductModel from "../schema/Product.model";
 import { T } from "../libs/types/common";
 import { ProductStatus } from "../libs/enums/product.enum";
 import { lutimes } from "fs";
+import { ObjectId } from "mongoose";
 
 
 class ProductService {
@@ -35,6 +36,20 @@ class ProductService {
         ]).exec()
 
         if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND)
+
+        return result;
+    }
+
+
+    public async getProduct(memberId: ObjectId | null, id: string): Promise<Product> {
+        const productId = shapeIntMongooseObjectId(id);
+
+        let result = await this.productModel.findOne({ _id: productId, productStatus: ProductStatus.PROCESS }).exec();
+
+        if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND)
+
+            //if authenticated and at the first time ==> view add
+
 
         return result;
     }
